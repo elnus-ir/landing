@@ -120,6 +120,11 @@ button{ font-family:inherit; }
 
 .brand{ display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.35rem; color:var(--text-0); }
 .brand-mark{ width:36px; height:36px; display:block; flex:none; }
+    .brand-mark img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
 .brand-mark.small{ width:28px; height:28px; }
 .brand-word{ font-family:var(--font-num); letter-spacing:.01em; display:flex; align-items:baseline; gap:8px; }
 .brand-word-ar{ font-family:var(--font-fa); font-size:.85rem; font-weight:600; color:var(--text-2); }
@@ -163,34 +168,88 @@ button{ font-family:inherit; }
 .orbit-scene{ position:relative; width:420px; height:420px; }
 .scene-glow{ position:absolute; inset:-20%; background:radial-gradient(circle, rgba(34,211,238,.28), transparent 65%); filter:blur(10px); z-index:0; }
 
-.core-cube{
-  position:absolute; inset:0; margin:auto; width:180px; height:180px;
-  transform-style:preserve-3d; transform:rotateX(52deg) rotateZ(45deg);
-  animation:cubeFloat 7s ease-in-out infinite;
-  z-index:2;
+.core-cube {
+    --cube-size: 180px;
+    --cube-half: 90px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--cube-size);
+    height: var(--cube-size);
+    margin-left: calc(var(--cube-size) / -2);
+    margin-top: calc(var(--cube-size) / -2);
+    transform-style: preserve-3d;
+    transform: rotateX(52deg) rotateZ(45deg);
+    animation: cubeFloat 7s ease-in-out infinite;
+    z-index: 2;
 }
-@keyframes cubeFloat{ 0%,100%{ transform:rotateX(52deg) rotateZ(45deg) translateY(0);} 50%{ transform:rotateX(52deg) rotateZ(45deg) translateY(-14px);} }
 
-.cube-face{ position:absolute; inset:0; border-radius:18px; }
-.cube-top{ background:linear-gradient(135deg, #4fe3ff, #2a86ff); transform:translateZ(70px); box-shadow:0 0 40px rgba(34,211,238,.5); }
-.cube-front{
-  width:180px; height:70px; top:auto; bottom:-35px;
-  background:linear-gradient(180deg, #0d2a52, #081733);
-  transform:rotateX(-90deg); transform-origin:top; border-radius:0 0 18px 18px;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+@keyframes cubeFloat {
+    0%,100% {
+        transform: rotateX(52deg) rotateZ(45deg) translateY(0);
+    }
+
+    50% {
+        transform: rotateX(52deg) rotateZ(45deg) translateY(-14px);
+    }
 }
-.cube-side{
-  width:70px; height:180px; left:auto; right:-35px; top:0;
-  background:linear-gradient(90deg, #0a2140, #0d2c58);
-  transform:rotateY(90deg); transform-origin:right; border-radius:0 18px 18px 0;
+
+.cube-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    border-radius: 18px;
+    backface-visibility: hidden;
 }
-.cube-glyph{
-  transform:rotateX(90deg) rotateZ(-45deg);
-  font-family:var(--font-num); font-weight:700; font-size:1.6rem; color:var(--cyan);
+
+/* TOP */
+.cube-top {
+    background: linear-gradient( 135deg, #4fe3ff, #2a86ff );
+    transform: translateZ(var(--cube-half));
+    box-shadow: 0 0 40px rgba(34,211,238,.5);
 }
-.cube-caption{
-  transform:rotateX(90deg) rotateZ(-45deg);
-  font-family:var(--font-num); font-size:.5rem; letter-spacing:.2em; color:var(--text-2); text-align:center; line-height:1.4;
+
+/* FRONT */
+.cube-front {
+    background: linear-gradient( 180deg, #0d2a52, #081733 );
+    transform: rotateX(-90deg) translateZ(var(--cube-half));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border-radius: 0 0 18px 18px;
+}
+
+/* RIGHT SIDE */
+.cube-side {
+    background: linear-gradient( 90deg, #0a2140, #0d2c58 );
+    transform: rotateY(90deg) translateZ(var(--cube-half));
+    border-radius: 0 18px 18px 0;
+}
+
+/* TEXT */
+.cube-glyph {
+    display: block;
+    font-family: var(--font-num);
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--cyan);
+    transform: none;
+}
+
+.cube-caption {
+    display: block;
+    font-family: var(--font-num);
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    color: var(--text-2);
+    text-align: center;
+    line-height: 1.35;
+    transform: none;
 }
 
 .orbit-node{

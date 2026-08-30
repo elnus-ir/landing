@@ -358,7 +358,7 @@ button{ font-family:inherit; }
 }
 .contact-inner{ display:grid; grid-template-columns:1.3fr .7fr; gap:48px; align-items:center; }
 .contact h2{ font-size:clamp(1.6rem, 3vw, 2.1rem); }
-.contact-desc{ color:var(--text-2); max-width:48ch; }
+.contact-desc{ color:var(--text-2); }
 .contact-channels{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:8px; }
 .channel{ display:flex; align-items:center; gap:10px; padding:14px 16px; border:1px solid var(--line-strong); border-radius:12px; background:rgba(255,255,255,.03); font-size:.88rem; color:var(--text-0); transition:border-color .25s, transform .25s; }
 .channel:hover{ border-color:var(--cyan); transform:translateY(-2px); }

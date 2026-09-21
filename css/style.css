@@ -320,6 +320,9 @@ button{ font-family:inherit; }
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
 }
+.our-vision .two-col {
+    row-gap: 24px;
+}
 
 /* ==========================================================================
    CAPABILITIES

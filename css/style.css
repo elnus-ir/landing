@@ -310,6 +310,9 @@ button{ font-family:inherit; }
    WE BELIEVE
    ========================================================================== */
 .we-believe { padding: 90px 0; }
+.we-believe .two-col + .two-col {
+    margin-top: 24px;
+}
 
 /* ==========================================================================
    Our Vision
